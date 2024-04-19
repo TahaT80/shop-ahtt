@@ -11,7 +11,6 @@ const Shopping = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
   const [value, setValue] = useState("all");
-  console.log(Data);
   async function getItems() {
     // const items = await fetch(
     //   "http://localhost:1337/api/items?populate=image",
@@ -20,7 +19,6 @@ const Shopping = () => {
     // const itemJson = await items.json();
     // dispatch(setItems(itemJson.data));
     dispatch(setItems(Data.data));
-
   }
   useEffect(() => {
     getItems();

@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import { IoMdRemove } from "react-icons/io";
 import { addToCart } from "../state";
 import { increaseCount, decreaseCount, removeFromCart } from "../state";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { MdClose } from "react-icons/md";
 import { motion } from "framer-motion";
 const Item = (item) => {
   const [hover, sethover] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [count, setcount] = useState(1);
   const cart = useSelector((state) => state.cart.cart);
   let a = true;
@@ -26,6 +24,7 @@ const Item = (item) => {
     }
   };
   aa();
+  
   return (
     <section className="w-[300px] min-h-[450px] ">
       <div
@@ -126,7 +125,7 @@ const Item = (item) => {
         <div className="">
           <img
             className="min-w-[300px] min-h-[450px] object-cover cursor-pointer"
-            src={`http://localhost:1337${item.item.attributes.image.data.attributes.url}`}
+            src={`${item.item.attributes.image.data.attributes.url}`}
             alt=""
           />
         </div>
