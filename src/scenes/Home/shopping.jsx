@@ -6,17 +6,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { setItems } from "../../state";
 import Item from "../../component/item";
 import { motion } from "framer-motion";
+import Data from "../../data/data";
 const Shopping = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
   const [value, setValue] = useState("all");
+  console.log(Data);
   async function getItems() {
-    const items = await fetch(
-      "http://localhost:1337/api/items?populate=image",
-      { method: "GET" }
-    );
-    const itemJson = await items.json();
-    dispatch(setItems(itemJson.data));
+    // const items = await fetch(
+    //   "http://localhost:1337/api/items?populate=image",
+    //   { method: "GET" }
+    // );
+    // const itemJson = await items.json();
+    // dispatch(setItems(itemJson.data));
+    dispatch(setItems(Data.data));
+
   }
   useEffect(() => {
     getItems();
@@ -52,7 +56,7 @@ const Shopping = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.5 }}
-        transition={{ duration: 0.5,delay:0.3 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
         variants={{
           hidden: { opacity: 0, y: -50 },
           visible: { opacity: 1, y: 0 },
